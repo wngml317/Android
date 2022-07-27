@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Alarm</string>
+    <string name="btnFinish">타이머 취소</string>
+    <string name="btnStart">타이머 시작</string>
+    <string name="input_time">초 입력</string>
+    <string name="timer_text">타이머 시간</string>
+    <string name="remain_text">남은 시간</string>
+</resources>
