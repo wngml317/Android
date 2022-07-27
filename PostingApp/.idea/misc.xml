@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/-/Documents/android/PostingApp/app/src/main/res/drawable/ic_menu_add.xml" value="0.289" />
+        <entry key="..\:/Users/-/Documents/android/PostingApp/app/src/main/res/drawable/ic_menu_save.xml" value="0.188" />
+        <entry key="..\:/Users/-/Documents/android/PostingApp/app/src/main/res/layout/activity_add.xml" value="0.31851851851851853" />
+        <entry key="..\:/Users/-/Documents/android/PostingApp/app/src/main/res/layout/activity_main.xml" value="0.234375" />
+        <entry key="..\:/Users/-/Documents/android/PostingApp/app/src/main/res/layout/posting_row.xml" value="0.31614583333333335" />
+        <entry key="..\:/Users/-/Documents/android/PostingApp/app/src/main/res/menu/menu.xml" value="0.1" />
+        <entry key="..\:/Users/-/Documents/android/PostingApp/app/src/main/res/menu/menu_add.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/-/Documents/android/PostingApp/app/src/main/res/menu/menu_save.xml" value="0.36614583333333334" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
