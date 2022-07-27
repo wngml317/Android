@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ImageActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ImgSelect"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="20dp"
+            app:srcCompat="@drawable/welcome" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:text="원하는 아바타를 선택" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnRabbit"
+                android:layout_width="0dp"
+                android:textFontWeight="1"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:textSize="24sp"
+                android:text="토끼" />
+
+            <Button
+                android:id="@+id/btnTurtle"
+                android:layout_width="0dp"
+                android:textFontWeight="1"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:textSize="24sp"
+                android:text="거북이" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSelect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textSize="24sp"
+            android:text="아바타 선택 완료" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
