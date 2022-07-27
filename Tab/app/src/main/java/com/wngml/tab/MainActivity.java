@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // 액션바 숨기는 코드
-        getSupportActionBar().hide();
+        // getSupportActionBar().hide();
 
         navigationView = findViewById(R.id.bottomNavigationView);
 
@@ -41,12 +41,19 @@ public class MainActivity extends AppCompatActivity {
 
                 Fragment fragment = null;
 
+
                 if (itemId == R.id.firstFragment) {
                     fragment = firstFragment;
+                    getSupportActionBar().setTitle("홈");
+                    getSupportActionBar().show();
                 } else if (itemId == R.id.secondFragment) {
                     fragment = secondFragment;
+                    getSupportActionBar().setTitle("친구");
+                    getSupportActionBar().show();
                 } else if (itemId == R.id.thirdFragment) {
                     fragment = thirdFragment;
+                    getSupportActionBar().setTitle("설정");
+                    getSupportActionBar().show();
                 }
 
                 return loadFragment(fragment);

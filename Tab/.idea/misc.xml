@@ -3,10 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/-/Documents/android/Tab/app/src/main/res/drawable-v24/ic_defalut_photo.xml" value="0.2945" />
+        <entry key="..\:/Users/-/Documents/android/Tab/app/src/main/res/drawable-v24/ic_delete.xml" value="0.2945" />
+        <entry key="..\:/Users/-/Documents/android/Tab/app/src/main/res/drawable-v24/ic_photo.xml" value="0.2945" />
         <entry key="..\:/Users/-/Documents/android/Tab/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/-/Documents/android/Tab/app/src/main/res/layout/fragment_first.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/-/Documents/android/Tab/app/src/main/res/layout/fragment_second.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/-/Documents/android/Tab/app/src/main/res/layout/fragment_third.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/-/Documents/android/Tab/app/src/main/res/layout/my_posting_row.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/-/Documents/android/Tab/app/src/main/res/menu/bottom_menu.xml" value="0.36614583333333334" />
       </map>
     </option>

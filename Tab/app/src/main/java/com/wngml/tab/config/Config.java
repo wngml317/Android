@@ -1,4 +1,4 @@
-package com.wngml.postingapp.config;
+package com.wngml.tab.config;
 
 public class Config {
 

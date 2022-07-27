@@ -1,8 +1,7 @@
-package com.wngml.postingapp.api;
+package com.wngml.tab.api;
 
-import com.wngml.postingapp.model.PostRes;
-import com.wngml.postingapp.model.Posting;
-import com.wngml.postingapp.model.PostingList;
+import com.wngml.tab.model.PostRes;
+import com.wngml.tab.model.PostingList;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;

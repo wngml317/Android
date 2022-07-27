@@ -1,4 +1,4 @@
-package com.wngml.postingapp.model;
+package com.wngml.tab.model;
 
 import java.io.Serializable;
 

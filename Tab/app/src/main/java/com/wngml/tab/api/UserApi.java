@@ -1,7 +1,7 @@
-package com.wngml.postingapp.api;
+package com.wngml.tab.api;
 
-import com.wngml.postingapp.model.User;
-import com.wngml.postingapp.model.UserRes;
+import com.wngml.tab.model.User;
+import com.wngml.tab.model.UserRes;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

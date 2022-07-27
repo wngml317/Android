@@ -1,8 +1,8 @@
-package com.wngml.postingapp.api;
+package com.wngml.tab.api;
 
 import android.content.Context;
 
-import com.wngml.postingapp.config.Config;
+import com.wngml.tab.config.Config;
 
 import java.util.concurrent.TimeUnit;
 

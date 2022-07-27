@@ -1,4 +1,4 @@
-package com.wngml.postingapp.adapter;
+package com.wngml.tab.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,11 +13,11 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.wngml.postingapp.EditActivity;
-import com.wngml.postingapp.MainActivity;
-import com.wngml.postingapp.R;
-import com.wngml.postingapp.config.Config;
-import com.wngml.postingapp.model.Posting;
+import com.wngml.tab.MainActivity;
+import com.wngml.tab.R;
+import com.wngml.tab.TestActivity;
+import com.wngml.tab.config.Config;
+import com.wngml.tab.model.Posting;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class MyPostingAdapter extends RecyclerView.Adapter<MyPostingAdapter.View
 
     @NonNull
     @Override
-    public MyPostingAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_posting_row, parent, false);
         return  new ViewHolder(view);
     }
@@ -77,24 +77,11 @@ public class MyPostingAdapter extends RecyclerView.Adapter<MyPostingAdapter.View
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
-                    int index = getAdapterPosition();
-                    Posting posting = postingList.get(index);
-
-                    Intent intent = new Intent(context, EditActivity.class);
-                    intent.putExtra("posting", posting);
+                    Intent intent = new Intent(context, TestActivity.class);
                     context.startActivity(intent);
-
-                }
-            });
-
-            imgDelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int index = getAdapterPosition();
-                    ((MainActivity)context).deletePosting(index);
                 }
             });
         }
+
     }
 }
