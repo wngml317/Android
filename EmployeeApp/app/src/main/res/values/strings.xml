@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EmployeeApp</string>
+    <string name="title_main">직원 목록</string>
+    <string name="title_edit">직원 정보 수정</string>
+    <string name="alert_adapter_title">정보 삭제</string>
+    <string name="alert_adapter_message">정말 삭제하시겠습니까?</string>
+</resources>
