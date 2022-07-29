@@ -35,34 +35,43 @@ public class MainActivity extends AppCompatActivity {
 
             ActivityCompat.requestPermissions(MainActivity.this,
                     new String[]{ Manifest.permission.ACCESS_FINE_LOCATION,
-                            Manifest.permission.ACCESS_COARSE_LOCATION }, 100);
+                            Manifest.permission.ACCESS_COARSE_LOCATION} ,
+                    100);
+
             return;
         }
-
-        // 3초 지나거나, 3미터 이동하면 LocationManager 실행
-        // minDistanceM : -1 일 때, 시간으로만 사용
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, -1, locationListener);
-
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+                3000,
+                -1,
+                locationListener);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == 100) {
-            if (ActivityCompat.checkSelfPermission(MainActivity.this,
-                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(MainActivity.this,
-                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if(requestCode == 100){
+
+            if(ActivityCompat.checkSelfPermission(MainActivity.this,
+                    Manifest.permission.ACCESS_FINE_LOCATION) !=
+                    PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(MainActivity.this,
+                            Manifest.permission.ACCESS_COARSE_LOCATION) !=
+                            PackageManager.PERMISSION_GRANTED) {
 
                 ActivityCompat.requestPermissions(MainActivity.this,
                         new String[]{ Manifest.permission.ACCESS_FINE_LOCATION,
-                                Manifest.permission.ACCESS_COARSE_LOCATION }, 100);
+                                Manifest.permission.ACCESS_COARSE_LOCATION} ,
+                        100);
                 return;
             }
 
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, -1, locationListener);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+                    3000,
+                    -1,
+                    locationListener);
 
         }
+
     }
 }
