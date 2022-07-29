@@ -3,7 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/drawable/ic_logout.xml" value="0.104" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/drawable/ic_review.xml" value="0.1965" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/drawable/ic_search.xml" value="0.3035" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/activity_login.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/activity_movie_info.xml" value="0.3605128205128205" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/activity_register.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/activity_review.xml" value="0.2677083333333333" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/activity_review_add.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/fragment_first.xml" value="0.1" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/fragment_forth.xml" value="0.31614583333333335" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/fragment_movie.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/fragment_mypage.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/fragment_recommend.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/fragment_review.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/fragment_second.xml" value="0.1" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/fragment_third.xml" value="0.31614583333333335" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/main_menu.xml" value="0.3651041666666667" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/movie_row.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/mypage_row.xml" value="0.3651041666666667" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/review_row.xml" value="0.2484472049689441" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/layout/search_row.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/menu/bottom_menu.xml" value="0.15" />
+        <entry key="..\:/Users/-/Documents/android/MovieApp/app/src/main/res/menu/main_menu.xml" value="0.36614583333333334" />
       </map>
     </option>
   </component>

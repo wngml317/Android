@@ -3,6 +3,7 @@ package com.wngml.movieapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -16,13 +17,14 @@ import com.wngml.movieapp.config.Config;
 import com.wngml.movieapp.model.Movie;
 import com.wngml.movieapp.model.MovieRes;
 import com.wngml.movieapp.model.Review;
+import com.wngml.movieapp.model.ReviewAdd;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class ReviewActivity extends AppCompatActivity {
+public class ReviewAddActivity extends AppCompatActivity {
 
     TextView txtTitle;
     RatingBar ratingBar;
@@ -32,7 +34,7 @@ public class ReviewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_review);
+        setContentView(R.layout.activity_review_add);
 
         Movie movie = (Movie) getIntent().getSerializableExtra("movie");
 
@@ -48,22 +50,32 @@ public class ReviewActivity extends AppCompatActivity {
                 float rating = ratingBar.getRating();
                 int movieId = movie.getId();
 
-                Retrofit retrofit = NetworkClient.getRetrofitClient(ReviewActivity.this);
+                Retrofit retrofit = NetworkClient.getRetrofitClient(ReviewAddActivity.this);
                 MovieApi api = retrofit.create(MovieApi.class);
 
                 SharedPreferences sp = getApplication().getSharedPreferences(Config.PREFERENCES_NAME, MODE_PRIVATE);
                 String accessToken = sp.getString("accessToken", "");
 
-                Review review = new Review(movieId, rating);
+                ReviewAdd reviewAdd = new ReviewAdd(movieId, rating);
+                reviewAdd.setMovieId(movieId);
+                reviewAdd.setRating(rating);
 
-                Call<MovieRes> call = api.review("Bearer " + accessToken, review);
+                Call<MovieRes> call = api.review("Bearer " + accessToken, reviewAdd);
                 showProgress("별점 주는 중...");
 
                 call.enqueue(new Callback<MovieRes>() {
                     @Override
                     public void onResponse(Call<MovieRes> call, Response<MovieRes> response) {
                         dismissProgress();
-                        finish();
+                        if (response.isSuccessful()) {
+                            finish();
+                        } else {
+                            if(response.code() == 401) {
+                                // 회원가입 액티비티 띄운다.
+                                Intent intent = new Intent(ReviewAddActivity.this, RegisterActivity.class);
+                                startActivity(intent);
+                            }
+                        }
                     }
 
                     @Override

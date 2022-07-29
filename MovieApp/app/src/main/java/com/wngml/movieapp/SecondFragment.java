@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.wngml.movieapp.adapter.MovieAdapter;
 import com.wngml.movieapp.adapter.SearchAdapter;
 import com.wngml.movieapp.api.MovieApi;
 import com.wngml.movieapp.api.NetworkClient;
@@ -31,10 +33,10 @@ import retrofit2.Retrofit;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ReviewFragment#newInstance} factory method to
+ * Use the {@link SecondFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ReviewFragment extends Fragment {
+public class SecondFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,7 +61,7 @@ public class ReviewFragment extends Fragment {
     int offset = 0;
     int limit = 25;
 
-    public ReviewFragment() {
+    public SecondFragment() {
         // Required empty public constructor
     }
 
@@ -72,8 +74,8 @@ public class ReviewFragment extends Fragment {
      * @return A new instance of fragment ReviewFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ReviewFragment newInstance(String param1, String param2) {
-        ReviewFragment fragment = new ReviewFragment();
+    public static SecondFragment newInstance(String param1, String param2) {
+        SecondFragment fragment = new SecondFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -94,7 +96,7 @@ public class ReviewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_review, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_second, container, false);
 
         progressBar = rootView.findViewById(R.id.progressBar);
         editSearch = rootView.findViewById(R.id.editSearch);
@@ -132,6 +134,31 @@ public class ReviewFragment extends Fragment {
             }
         });
 
+        editSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(editSearch.getText().toString().trim().isEmpty()) {
+                    getNetworkData();
+                }
+            }
+        });
+//
+//        if(editSearch.getText().toString().trim().isEmpty()) {
+//            getNetworkData();
+//        }
+
+        keyword = "";
+        getNetworkData();
         return rootView;
     }
 

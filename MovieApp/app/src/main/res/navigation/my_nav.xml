@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/my_nav">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/firstFragment">
 
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.wngml.movieapp.FirstFragment"
+        android:label="영화정보"
+        tools:layout="@layout/fragment_first" />
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="com.wngml.movieapp.SecondFragment"
+        android:label="리뷰작성"
+        tools:layout="@layout/fragment_second" />
+    <fragment
+        android:id="@+id/thirdFragment"
+        android:name="com.wngml.movieapp.ThirdFragment"
+        android:label="영화추천"
+        tools:layout="@layout/fragment_third" />
+    <fragment
+        android:id="@+id/forthFragment"
+        android:name="com.wngml.movieapp.ForthFragment"
+        android:label="내정보"
+        tools:layout="@layout/fragment_forth" />
 </navigation>

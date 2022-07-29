@@ -1,19 +1,39 @@
 package com.wngml.movieapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import com.wngml.movieapp.adapter.MyReviewAdapter;
+import com.wngml.movieapp.api.MovieApi;
+import com.wngml.movieapp.api.NetworkClient;
+import com.wngml.movieapp.config.Config;
+import com.wngml.movieapp.model.Review;
+import com.wngml.movieapp.model.ReviewList;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link MypageFragment#newInstance} factory method to
+ * Use the {@link ForthFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MypageFragment extends Fragment {
+public class ForthFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +44,20 @@ public class MypageFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public MypageFragment() {
+    TextView txtEmail;
+    TextView txtName;
+    TextView txtGender;
+
+    ProgressBar progressBar;
+    RecyclerView recyclerView;
+    MyReviewAdapter adapter;
+    ArrayList<Review> reviewList = new ArrayList<>();
+
+    int count =0;
+    int offset = 0;
+    int limit = 25;
+
+    public ForthFragment() {
         // Required empty public constructor
     }
 
@@ -37,8 +70,8 @@ public class MypageFragment extends Fragment {
      * @return A new instance of fragment MyPageFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MypageFragment newInstance(String param1, String param2) {
-        MypageFragment fragment = new MypageFragment();
+    public static ForthFragment newInstance(String param1, String param2) {
+        ForthFragment fragment = new ForthFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +92,44 @@ public class MypageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mypage, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_forth, container, false);
+
+        txtEmail = rootView.findViewById(R.id.txtEmail);
+        txtName = rootView.findViewById(R.id.txtName);
+        txtGender = rootView.findViewById(R.id.txtGender);
+
+        progressBar = rootView.findViewById(R.id.progressBar);
+        recyclerView = rootView.findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        Retrofit retrofit = NetworkClient.getRetrofitClient(getContext());
+        MovieApi api = retrofit.create(MovieApi.class);
+
+        SharedPreferences sp = getContext().getSharedPreferences(Config.PREFERENCES_NAME, Context.MODE_PRIVATE);
+        String accessToken = sp.getString("accessToken", "");
+
+
+
+        Call<ReviewList> call = api.mypage("Bearer " + accessToken, offset, limit);
+        call.enqueue(new Callback<ReviewList>() {
+            @Override
+            public void onResponse(Call<ReviewList> call, Response<ReviewList> response) {
+                progressBar.setVisibility(View.INVISIBLE);
+
+                if(response.isSuccessful()) {
+                    ReviewList data = response.body();
+                    reviewList.addAll(data.getItems());
+                    adapter = new MyReviewAdapter(getActivity(), reviewList);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ReviewList> call, Throwable t) {
+                progressBar.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        return rootView;
     }
 }
