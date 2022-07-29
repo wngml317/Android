@@ -77,21 +77,6 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(MainActivity.this,
-                    new String[]{ Manifest.permission.ACCESS_FINE_LOCATION,
-                            Manifest.permission.ACCESS_COARSE_LOCATION} ,
-                    100);
-
-            return;
-        }
-
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                1000,
-                -1,
-                locationListener);
-
         progressBar.setVisibility(View.INVISIBLE);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +93,21 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{ Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION} ,
+                    100);
+
+            return;
+        }
+
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+                1000,
+                -1,
+                locationListener);
 
 
     }
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                     placeList.addAll(response.body().getResults());
 
                     adapter = new PlaceAdapter(MainActivity.this, placeList);
-                    
+
                     recyclerView.setAdapter(adapter);
                 }
             }
