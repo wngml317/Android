@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        
+
         progressBar.setVisibility(View.INVISIBLE);
 
         // 검색 버튼을 누르면, 네트워크로 데이터를 요청해서 정보를 받아온다.
