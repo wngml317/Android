@@ -1,6 +1,8 @@
 package com.wngml.placesapp.model;
 
-public class Geometry {
+import java.io.Serializable;
+
+public class Geometry implements Serializable {
 
     private LatLngLiteral location;
 

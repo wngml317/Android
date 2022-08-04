@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/-/Documents/android/PlacesApp/app/src/main/res/drawable/ic_location.xml" value="0.232" />
         <entry key="..\:/Users/-/Documents/android/PlacesApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/-/Documents/android/PlacesApp/app/src/main/res/layout/activity_map.xml" value="0.1" />
+        <entry key="..\:/Users/-/Documents/android/PlacesApp/app/src/main/res/layout/activity_place.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/-/Documents/android/PlacesApp/app/src/main/res/layout/place_row.xml" value="0.1" />
+        <entry key="..\:/Users/-/Documents/android/PlacesApp/app/src/main/res/menu/main_menu.xml" value="0.26614583333333336" />
       </map>
     </option>
   </component>

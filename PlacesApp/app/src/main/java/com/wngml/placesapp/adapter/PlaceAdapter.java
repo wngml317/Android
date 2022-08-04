@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.wngml.placesapp.MainActivity;
 import com.wngml.placesapp.MapActivity;
 import com.wngml.placesapp.R;
 import com.wngml.placesapp.model.Place;
@@ -73,10 +74,9 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
                 public void onClick(View view) {
                     // 지도액티비티 띄운다.
                     int index = getAdapterPosition();
-                    Place place = placeList.get(index);
-                    Intent intent = new Intent(context, MapActivity.class);
-                    intent.putExtra("place", place);
-                    context.startActivity(intent);
+
+                    ((MainActivity)context).runMapActivity(index);
+
                 }
             });
         }

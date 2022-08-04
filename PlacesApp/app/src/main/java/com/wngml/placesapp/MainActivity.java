@@ -7,12 +7,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     PlaceAdapter adapter;
     ArrayList<Place> placeList = new ArrayList<>();
 
-    private String pagetoken;
+    private String pagetoken="";
     private String keyword = "";
 
     LocationManager locationManager;
@@ -66,6 +69,29 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                int lastPosition = ((LinearLayoutManager)recyclerView.getLayoutManager()).findLastCompletelyVisibleItemPosition();
+                int totalCount = recyclerView.getAdapter().getItemCount();
+
+                if(  lastPosition+1  == totalCount  ){
+
+                    if (pagetoken != null) {
+                        addNetworkData();
+                    }
+                }
+
+
+            }
+        });
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
@@ -120,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
         Retrofit retrofit = NetworkClient.getRetrofitClient(MainActivity.this);
         PlaceApi api = retrofit.create(PlaceApi.class);
-        Call<PlaceList> call = api.getplaceList(keyword, lat+","+lng, 2000, "ko", Config.MAPS_API_KEY);
+        Call<PlaceList> call = api.getplaceList(keyword, lat+","+lng, 2000, "ko", pagetoken, Config.MAPS_API_KEY);
         call.enqueue(new Callback<PlaceList>() {
             @Override
             public void onResponse(Call<PlaceList> call, Response<PlaceList> response) {
@@ -133,6 +159,33 @@ public class MainActivity extends AppCompatActivity {
                     adapter = new PlaceAdapter(MainActivity.this, placeList);
 
                     recyclerView.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PlaceList> call, Throwable t) {
+                progressBar.setVisibility(View.INVISIBLE);
+            }
+        });
+    }
+
+    private void addNetworkData() {
+
+        progressBar.setVisibility(View.VISIBLE);
+
+        Retrofit retrofit = NetworkClient.getRetrofitClient(MainActivity.this);
+        PlaceApi api = retrofit.create(PlaceApi.class);
+        Call<PlaceList> call = api.getplaceList(keyword, lat+","+lng, 2000, "ko", pagetoken, Config.MAPS_API_KEY);
+        call.enqueue(new Callback<PlaceList>() {
+            @Override
+            public void onResponse(Call<PlaceList> call, Response<PlaceList> response) {
+                progressBar.setVisibility(View.INVISIBLE);
+                if(response.isSuccessful()) {
+
+                    pagetoken = response.body().getNext_page_token();
+                    placeList.addAll(response.body().getResults());
+
+                    adapter.notifyDataSetChanged();
                 }
             }
 
@@ -170,6 +223,36 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    public void runMapActivity(int index) {
+        Place place = placeList.get(index);
+        Intent intent = new Intent(MainActivity.this, MapActivity.class);
+        intent.putExtra("lat", lat);
+        intent.putExtra("lng", lng);
+        intent.putExtra("place", place);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+
+        if(itemId == R.id.menuLocation) {
+            Intent intent = new Intent(MainActivity.this, PlaceActivity.class);
+
+            Log.i("PlaceApp", ""+placeList);
+            intent.putExtra("lat", lat);
+            intent.putExtra("lng", lng);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
